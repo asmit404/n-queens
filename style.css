@@ -1,3 +1,15 @@
+:root {
+  --background-color: #0e1116;
+  --text-color: #e0e0e0;
+  --header-bg-color: #26292e;
+  --highlight-color: #c3ceda;
+  --slider-bg-color: #e8eddf;
+  --progress-bar-color: #0c4160;
+  --button-bg-color: #c3ceda;
+  --button-text-color: #121212;
+  --table-bg-color: #1f1f1f;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,29 +18,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
+/* Header */
 .header {
   position: relative;
   top: -20px;
   width: 100%;
-  background-color: #011627;
-  color: #fdfffc;
+  background-color: var(--header-bg-color);
+  color: var(--text-color);
 }
 
 .header h2 {
   padding: 0.5em;
 }
 
+/* N-Queen Container */
 div.n-queen {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
   max-width: 450px;
-  /* border: 1px solid red; */
 }
 
+/* Input Box */
 .inputbox {
   position: relative;
   top: 1.5em;
@@ -40,16 +56,17 @@ div.n-queen {
   font-size: 14px;
   padding: 4px;
   border: none;
-  border-bottom: 2px solid #2ec4b6;
+  border-bottom: 2px solid var(--highlight-color);
   outline: none;
   background: transparent;
+  color: var(--text-color);
 }
 
 .inputbox label {
   position: absolute;
   top: 4px;
   left: 0px;
-  color: #2ec4b6;
+  color: var(--highlight-color);
   font-size: 14px;
   pointer-events: none;
   transition: 0.3s;
@@ -63,23 +80,21 @@ div.n-queen {
   font-weight: 400;
 }
 
+/* Slider */
 .slider-container {
   position: absolute;
   left: 5%;
   width: 90%;
-  /* text-align: center; */
   margin: 0 auto;
   top: 4em;
-  /* border: 2px solid red; */
 }
 
 .slider {
-  -webkit-appearance: none;
   width: 100%;
   margin: 0 auto;
   height: 7px;
   border-radius: 7px;
-  background: linear-gradient(90deg, #e8eddf 60%, #e8eddf 60%);
+  background: linear-gradient(90deg, var(--slider-bg-color) 60%, var(--slider-bg-color) 60%);
   outline: none;
 }
 
@@ -89,7 +104,7 @@ div.n-queen {
   top: -10px;
   font-size: 14px;
   font-weight: 500;
-  color: #fa7921;
+  color: var(--highlight-color);
 }
 
 .slider::before {
@@ -99,71 +114,53 @@ div.n-queen {
   right: 0px;
   font-size: 14px;
   font-weight: 500;
-  color: #fa7921;
+  color: var(--highlight-color);
 }
 
-/* Google chrome */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  top: -2px;
-  cursor: pointer;
-  background-color: #fa7921;
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.slider::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-  height: 15px;
-  width: 15px;
-  z-index: 1;
-  color: #ffba08;
-}
-
-/* Mozilla firefox */
+/* Slider Thumb */
+.slider::-webkit-slider-thumb,
 .slider::-moz-range-thumb {
+  -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  background-color: #fa7921;
+  background-color: var(--highlight-color);
   cursor: pointer;
-  position: relative;
-  top: -2px;
   border-radius: 50%;
   z-index: 2;
+  transition: box-shadow 0.3s ease;
 }
 
-.slider::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #fa7921;
+.slider::-webkit-slider-thumb:hover,
+.slider::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--highlight-color);
 }
 
+/* Progress Bar */
 #progress-bar {
   width: 60%;
   height: 7px;
-  background: #ffd200;
+  background: var(--progress-bar-color);
   border-radius: 7px;
   position: absolute;
   top: 7px;
 }
 
+/* Play Button */
 .play-button {
   position: relative;
   top: 80px;
   left: 35%;
   border: none;
   outline: none;
-  color: #fdfffc;
+  color: var(--button-text-color);
   width: 80px;
   height: 35px;
-  background-color: #f72585;
+  background-color: var(--button-bg-color);
   border-radius: 10px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  /* z-index: 1; */
 }
 
 .play-button:hover {
@@ -171,15 +168,17 @@ div.n-queen {
   transform: scale(1.05);
 }
 
+/* Queen Arrangement */
 .queen-arrangement {
   position: relative;
   top: 140px;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
-  color: #247ba0;
+  color: var(--highlight-color);
 }
 
+/* N-Queen Board */
 #n-queen-board {
   position: relative;
   display: flex;
@@ -196,11 +195,12 @@ div.n-queen {
   justify-content: center;
   flex-direction: column;
   margin: 0 10px;
-  box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   bottom: 10px;
 }
 
+/* Table */
 table {
   position: relative;
   border-collapse: collapse;
@@ -214,16 +214,19 @@ td {
   width: 35px;
   height: 35px;
   text-align: center;
+  background-color: var(--table-bg-color);
+  color: var(--text-color);
 }
 
+/* Heading */
 h4 {
   position: relative;
   top: -5px;
   padding: 8px;
   width: 95%;
-  background-color: #0582ca;
+  background-color: var(--highlight-color);
   align-self: center;
-  color: #fdfffc;
+  color: var(--button-text-color);
   text-align: center;
   border-radius: 4px 4px 0 0;
 }
